@@ -8,10 +8,19 @@
         <entry key="..\:/Kotlin/Music/app/src/main/res/drawable/backgrond_splash.xml" value="0.1325" />
         <entry key="..\:/Kotlin/Music/app/src/main/res/drawable/background_album.xml" value="0.1325" />
         <entry key="..\:/Kotlin/Music/app/src/main/res/drawable/background_image.xml" value="0.1325" />
+        <entry key="..\:/Kotlin/Music/app/src/main/res/drawable/background_item_album.xml" value="0.1325" />
+        <entry key="..\:/Kotlin/Music/app/src/main/res/drawable/background_item_favourite.xml" value="0.1325" />
+        <entry key="..\:/Kotlin/Music/app/src/main/res/drawable/background_item_library.xml" value="0.1325" />
+        <entry key="..\:/Kotlin/Music/app/src/main/res/drawable/background_item_singer.xml" value="0.1325" />
+        <entry key="..\:/Kotlin/Music/app/src/main/res/drawable/background_item_song.xml" value="0.1325" />
         <entry key="..\:/Kotlin/Music/app/src/main/res/drawable/background_splash.xml" value="0.1325" />
         <entry key="..\:/Kotlin/Music/app/src/main/res/drawable/ic_discover.xml" value="0.1325" />
+        <entry key="..\:/Kotlin/Music/app/src/main/res/drawable/ic_item_album.xml" value="0.1325" />
+        <entry key="..\:/Kotlin/Music/app/src/main/res/drawable/ic_item_music.xml" value="0.1325" />
+        <entry key="..\:/Kotlin/Music/app/src/main/res/drawable/ic_item_singer.xml" value="0.1325" />
         <entry key="..\:/Kotlin/Music/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1325" />
         <entry key="..\:/Kotlin/Music/app/src/main/res/drawable/ic_library_music.xml" value="0.1325" />
+        <entry key="..\:/Kotlin/Music/app/src/main/res/drawable/ic_music.xml" value="0.1325" />
         <entry key="..\:/Kotlin/Music/app/src/main/res/drawable/ic_profile.xml" value="0.1325" />
         <entry key="..\:/Kotlin/Music/app/src/main/res/layout/activity_main.xml" value="0.19010416666666666" />
         <entry key="..\:/Kotlin/Music/app/src/main/res/layout/fragment_discover.xml" value="0.20416666666666666" />

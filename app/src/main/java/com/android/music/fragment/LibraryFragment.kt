@@ -24,15 +24,6 @@ class LibraryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val imageView = binding?.image
-        imageView?.let {
-            val media_link = "https://music-2410.000webhostapp.com/images/singer/bich_phuong.jpg"
-            val imgUri = media_link.toUri()
-            imageView.load(imgUri) {
-                placeholder(R.drawable.loading_animation)
-                error(R.drawable.ic_broken_image)
-            }
-        }
     }
 
     override fun onDestroyView() {
