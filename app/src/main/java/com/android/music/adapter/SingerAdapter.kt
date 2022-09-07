@@ -9,11 +9,13 @@ import com.android.music.R
 import com.android.music.databinding.ItemSingerBinding
 import com.android.music.model.Singer
 
-class SingerAdapter : RecyclerView.Adapter<SingerAdapter.SingerViewHolder>() {
+class SingerAdapter(
+    var itemSingerListener: ItemSingerListener
+) : RecyclerView.Adapter<SingerAdapter.SingerViewHolder>() {
 
     private var singers: List<Singer> = listOf()
 
-    class SingerViewHolder(
+    inner class SingerViewHolder(
         private var binding: ItemSingerBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(singer: Singer) {
@@ -24,6 +26,9 @@ class SingerAdapter : RecyclerView.Adapter<SingerAdapter.SingerViewHolder>() {
                 error(R.drawable.ic_broken_image)
             }
             binding.tvNameSinger.text = singer.name
+            binding.root.setOnClickListener{
+                itemSingerListener.onItemSingerClick(singer)
+            }
         }
     }
 
@@ -42,5 +47,9 @@ class SingerAdapter : RecyclerView.Adapter<SingerAdapter.SingerViewHolder>() {
     fun setSingers(singers: List<Singer>) {
         this.singers = singers
         notifyDataSetChanged()
+    }
+
+    interface ItemSingerListener {
+        fun onItemSingerClick(singer: Singer)
     }
 }

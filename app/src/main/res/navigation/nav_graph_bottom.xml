@@ -4,8 +4,7 @@
     android:id="@+id/nav_graph_bottom"
     app:startDestination="@id/discover">
 
-    <include app:graph="@navigation/library" />
+    <include app:graph="@navigation/personal" />
     <include app:graph="@navigation/discover" />
-    <include app:graph="@navigation/profile" />
 
 </navigation>

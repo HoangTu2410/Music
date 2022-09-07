@@ -1,5 +1,6 @@
 package com.android.music.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -55,12 +56,9 @@ class DiscoverViewModel : ViewModel() {
     private fun getSingers() {
 
         viewModelScope.launch {
-            _status.value = MusicsStatus.LOADING
             try {
                 _singers.value = MusicsAPI.retrofitService.getNewSingers()
-                _status.value = MusicsStatus.DONE
             } catch (e: Exception) {
-                _status.value = MusicsStatus.ERROR
                 _singers.value = listOf()
             }
         }

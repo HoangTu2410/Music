@@ -16,13 +16,14 @@ class SongAdapter : RecyclerView.Adapter<SongAdapter.SongViewHolder>() {
     class SongViewHolder(
         private var binding: ItemSongBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(song: Song) {
+        fun bind(song: Song, number: Int) {
             val imageView = binding.imgSong
             val imgUri = song.image.toUri()
             imageView.load(imgUri) {
                 placeholder(R.drawable.loading_animation)
                 error(R.drawable.ic_broken_image)
             }
+            binding.tvNumber.text = (number+1).toString()
             binding.tvNameSong.text = song.name
             binding.tvNameSinger.text = song.singer_name
         }
@@ -33,7 +34,7 @@ class SongAdapter : RecyclerView.Adapter<SongAdapter.SongViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: SongViewHolder, position: Int) {
-        holder.bind(songs[position])
+        holder.bind(songs[position],position)
     }
 
     override fun getItemCount(): Int {
