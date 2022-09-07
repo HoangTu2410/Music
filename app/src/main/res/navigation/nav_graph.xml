@@ -27,8 +27,11 @@
             android:id="@+id/action_mainFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
         <action
-            android:id="@+id/action_mainFragment_to_listSongFragment"
-            app:destination="@id/listSongFragment" />
+            android:id="@+id/action_mainFragment_to_singerFragment"
+            app:destination="@id/singerFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_albumFragment"
+            app:destination="@id/albumFragment" />
     </fragment>
 
     <fragment
@@ -42,9 +45,14 @@
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
-        android:id="@+id/listSongFragment"
-        android:name="com.android.music.fragment.ListSongFragment"
-        android:label="fragment_list_song"
-        tools:layout="@layout/fragment_list_song" />
+        android:id="@+id/singerFragment"
+        android:name="com.android.music.fragment.SingerFragment"
+        android:label="fragment_singer"
+        tools:layout="@layout/fragment_singer" />
+    <fragment
+        android:id="@+id/albumFragment"
+        android:name="com.android.music.fragment.AlbumFragment"
+        android:label="fragment_album"
+        tools:layout="@layout/fragment_album" />
 
 </navigation>

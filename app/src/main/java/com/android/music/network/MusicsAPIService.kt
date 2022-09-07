@@ -9,6 +9,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.create
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 private const val BASE_URL = "https://music-2410.000webhostapp.com/api/"
@@ -31,6 +32,8 @@ interface MusicsAPIService {
     suspend fun getNewSongs(): List<Song>
     @GET("songs.php")
     suspend fun getSongsBySinger(@Query("id_singer") id_singer: Int): List<Song>
+    @GET("songs.php")
+    suspend fun getSongsByAlbum(@Query("id_album") id_album: Int): List<Song>
 }
 
 object MusicsAPI {

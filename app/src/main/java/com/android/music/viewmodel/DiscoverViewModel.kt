@@ -1,6 +1,5 @@
 package com.android.music.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,12 +10,7 @@ import com.android.music.model.Song
 import com.android.music.network.MusicsAPI
 import kotlinx.coroutines.launch
 
-enum class MusicsStatus { LOADING, ERROR, DONE }
-
 class DiscoverViewModel : ViewModel() {
-
-    private val _status = MutableLiveData<MusicsStatus>()
-    val status: LiveData<MusicsStatus> = _status
 
     private val _singers = MutableLiveData<List<Singer>>()
     val singers: LiveData<List<Singer>> = _singers
