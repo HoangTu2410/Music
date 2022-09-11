@@ -1,5 +1,6 @@
 package com.android.music.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -31,8 +32,10 @@ class DiscoverViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 _songs.value = MusicsAPI.retrofitService.getNewSongs()
+                Log.e("Size", _songs.value!!.size.toString())
             } catch (e: Exception) {
                 _songs.value = listOf()
+                e.printStackTrace()
             }
         }
     }

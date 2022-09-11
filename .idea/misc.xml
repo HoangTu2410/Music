@@ -19,6 +19,8 @@
         <entry key="..\:/Kotlin/Music/app/src/main/res/drawable/background_item_song.xml" value="0.1325" />
         <entry key="..\:/Kotlin/Music/app/src/main/res/drawable/background_search_view.xml" value="0.1325" />
         <entry key="..\:/Kotlin/Music/app/src/main/res/drawable/background_splash.xml" value="0.1325" />
+        <entry key="..\:/Kotlin/Music/app/src/main/res/drawable/custom_seekbar.xml" value="0.1325" />
+        <entry key="..\:/Kotlin/Music/app/src/main/res/drawable/ic_arrow_down.xml" value="0.1325" />
         <entry key="..\:/Kotlin/Music/app/src/main/res/drawable/ic_back.xml" value="0.1325" />
         <entry key="..\:/Kotlin/Music/app/src/main/res/drawable/ic_discover.xml" value="0.1325" />
         <entry key="..\:/Kotlin/Music/app/src/main/res/drawable/ic_favourite.xml" value="0.1325" />
@@ -27,8 +29,16 @@
         <entry key="..\:/Kotlin/Music/app/src/main/res/drawable/ic_item_singer.xml" value="0.1325" />
         <entry key="..\:/Kotlin/Music/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1325" />
         <entry key="..\:/Kotlin/Music/app/src/main/res/drawable/ic_library_music.xml" value="0.1325" />
+        <entry key="..\:/Kotlin/Music/app/src/main/res/drawable/ic_list_music.xml" value="0.1325" />
+        <entry key="..\:/Kotlin/Music/app/src/main/res/drawable/ic_loop.xml" value="0.1325" />
+        <entry key="..\:/Kotlin/Music/app/src/main/res/drawable/ic_love.xml" value="0.1325" />
         <entry key="..\:/Kotlin/Music/app/src/main/res/drawable/ic_music.xml" value="0.1325" />
+        <entry key="..\:/Kotlin/Music/app/src/main/res/drawable/ic_pause.xml" value="0.1325" />
+        <entry key="..\:/Kotlin/Music/app/src/main/res/drawable/ic_play.xml" value="0.1325" />
         <entry key="..\:/Kotlin/Music/app/src/main/res/drawable/ic_profile.xml" value="0.1325" />
+        <entry key="..\:/Kotlin/Music/app/src/main/res/drawable/ic_shuffle.xml" value="0.1325" />
+        <entry key="..\:/Kotlin/Music/app/src/main/res/drawable/ic_skip_next.xml" value="0.1325" />
+        <entry key="..\:/Kotlin/Music/app/src/main/res/drawable/ic_skip_previous.xml" value="0.1325" />
         <entry key="..\:/Kotlin/Music/app/src/main/res/drawable/ic_song.xml" value="0.1325" />
         <entry key="..\:/Kotlin/Music/app/src/main/res/layout/activity_main.xml" value="0.19010416666666666" />
         <entry key="..\:/Kotlin/Music/app/src/main/res/layout/fragment_album.xml" value="0.17422222222222222" />
@@ -39,6 +49,7 @@
         <entry key="..\:/Kotlin/Music/app/src/main/res/layout/fragment_login.xml" value="0.20416666666666666" />
         <entry key="..\:/Kotlin/Music/app/src/main/res/layout/fragment_main.xml" value="0.20416666666666666" />
         <entry key="..\:/Kotlin/Music/app/src/main/res/layout/fragment_personal.xml" value="0.20416666666666666" />
+        <entry key="..\:/Kotlin/Music/app/src/main/res/layout/fragment_play_music.xml" value="0.17657657657657658" />
         <entry key="..\:/Kotlin/Music/app/src/main/res/layout/fragment_profile.xml" value="0.20416666666666666" />
         <entry key="..\:/Kotlin/Music/app/src/main/res/layout/fragment_singer.xml" value="0.20416666666666666" />
         <entry key="..\:/Kotlin/Music/app/src/main/res/layout/fragment_splash.xml" value="0.20416666666666666" />

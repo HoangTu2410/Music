@@ -32,6 +32,9 @@
         <action
             android:id="@+id/action_mainFragment_to_albumFragment"
             app:destination="@id/albumFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_playMusicFragment"
+            app:destination="@id/playMusicFragment" />
     </fragment>
 
     <fragment
@@ -48,11 +51,24 @@
         android:id="@+id/singerFragment"
         android:name="com.android.music.fragment.SingerFragment"
         android:label="fragment_singer"
-        tools:layout="@layout/fragment_singer" />
+        tools:layout="@layout/fragment_singer" >
+        <action
+            android:id="@+id/action_singerFragment_to_playMusicFragment"
+            app:destination="@id/playMusicFragment" />
+    </fragment>
     <fragment
         android:id="@+id/albumFragment"
         android:name="com.android.music.fragment.AlbumFragment"
         android:label="fragment_album"
-        tools:layout="@layout/fragment_album" />
+        tools:layout="@layout/fragment_album" >
+        <action
+            android:id="@+id/action_albumFragment_to_playMusicFragment"
+            app:destination="@id/playMusicFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/playMusicFragment"
+        android:name="com.android.music.fragment.PlayMusicFragment"
+        android:label="fragment_play_music"
+        tools:layout="@layout/fragment_play_music" />
 
 </navigation>

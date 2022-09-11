@@ -12,7 +12,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-private const val BASE_URL = "https://music-2410.000webhostapp.com/api/"
+private const val BASE_URL = "https://music2410.000webhostapp.com/api/"
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())

@@ -15,13 +15,15 @@ import coil.load
 import com.android.music.R
 import com.android.music.adapter.SongAdapter
 import com.android.music.databinding.FragmentSingerBinding
+import com.android.music.model.Song
 import com.android.music.viewmodel.SongsViewModel
 
-class SingerFragment : Fragment() {
+class SingerFragment : Fragment(), SongAdapter.ItemSongListener {
 
-    private var _binding: FragmentSingerBinding ?= null
+    private var _binding: FragmentSingerBinding? = null
     private val binding get() = _binding!!
     private val viewModel: SongsViewModel by viewModels()
+    private var id_singer: Int? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,7 +38,7 @@ class SingerFragment : Fragment() {
         binding.imgBack.setOnClickListener {
             findNavController().popBackStack()
         }
-        val id_singer = arguments?.getInt("id_singer")
+        id_singer = arguments?.getInt("id_singer")
         val image_singer = arguments?.getString("image_singer")
         val imageView = binding.imgSinger
         val imgUri = image_singer?.toUri()
@@ -44,10 +46,8 @@ class SingerFragment : Fragment() {
             placeholder(R.drawable.loading_animation)
             error(R.drawable.ic_broken_image)
         }
-        if (id_singer != null) {
-            viewModel.loadListSongBySinger(id_singer)
-        }
-        val adapter = SongAdapter()
+        viewModel.loadListSongBySinger(id_singer!!)
+        val adapter = SongAdapter(this)
         binding.rcvListSong.layoutManager = LinearLayoutManager(context)
         binding.rcvListSong.adapter = adapter
         binding.rcvListSong.setHasFixedSize(true)
@@ -59,5 +59,13 @@ class SingerFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onItemSongClick(position: Int) {
+        val bundle = Bundle()
+        bundle.putString("type","SONG_OF_SINGER")
+        bundle.putInt("position",position)
+        bundle.putInt("id", id_singer!!)
+        parentFragment?.findNavController()?.navigate(R.id.action_singerFragment_to_playMusicFragment,bundle)
     }
 }

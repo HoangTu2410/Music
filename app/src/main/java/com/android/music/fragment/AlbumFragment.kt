@@ -13,12 +13,14 @@ import coil.load
 import com.android.music.R
 import com.android.music.adapter.SongAdapter
 import com.android.music.databinding.FragmentAlbumBinding
+import com.android.music.model.Song
 import com.android.music.viewmodel.SongsViewModel
 
-class AlbumFragment : Fragment() {
-    private var _binding: FragmentAlbumBinding ?= null
+class AlbumFragment : Fragment(), SongAdapter.ItemSongListener {
+    private var _binding: FragmentAlbumBinding? = null
     private val binding get() = _binding!!
     private val viewModel: SongsViewModel by viewModels()
+    private var id_album: Int? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,7 +35,7 @@ class AlbumFragment : Fragment() {
         binding.imgBack.setOnClickListener {
             findNavController().popBackStack()
         }
-        val id_album = arguments?.getInt("id_album")
+        id_album = arguments?.getInt("id_album")
         val image_album = arguments?.getString("image_album")
         val imageView = binding.imgAlbum
         val imgUri = image_album?.toUri()
@@ -41,10 +43,8 @@ class AlbumFragment : Fragment() {
             placeholder(R.drawable.loading_animation)
             error(R.drawable.ic_broken_image)
         }
-        if (id_album != null) {
-            viewModel.loadListSongByAlbum(id_album)
-        }
-        val adapter = SongAdapter()
+        viewModel.loadListSongByAlbum(id_album!!)
+        val adapter = SongAdapter(this)
         binding.rcvListSong.layoutManager = LinearLayoutManager(context)
         binding.rcvListSong.adapter = adapter
         binding.rcvListSong.setHasFixedSize(true)
@@ -56,6 +56,14 @@ class AlbumFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onItemSongClick(position: Int) {
+        val bundle = Bundle()
+        bundle.putString("type","SONG_OF_ALBUM")
+        bundle.putInt("position", position)
+        bundle.putInt("id", id_album!!)
+        parentFragment?.findNavController()?.navigate(R.id.action_albumFragment_to_playMusicFragment,bundle)
     }
 
 }

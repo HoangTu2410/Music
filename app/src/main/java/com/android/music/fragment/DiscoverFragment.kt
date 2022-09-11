@@ -20,9 +20,11 @@ import com.android.music.adapter.SongAdapter
 import com.android.music.databinding.FragmentDiscoverBinding
 import com.android.music.model.Album
 import com.android.music.model.Singer
+import com.android.music.model.Song
 import com.android.music.viewmodel.DiscoverViewModel
 
-class DiscoverFragment : Fragment(), SingerAdapter.ItemSingerListener, AlbumAdapter.ItemAlbumListener {
+class DiscoverFragment : Fragment(), SingerAdapter.ItemSingerListener,
+    AlbumAdapter.ItemAlbumListener, SongAdapter.ItemSongListener {
     private var _binding: FragmentDiscoverBinding? = null
     private val binding get() = _binding!!
     private val viewModel: DiscoverViewModel by viewModels()
@@ -53,7 +55,7 @@ class DiscoverFragment : Fragment(), SingerAdapter.ItemSingerListener, AlbumAdap
             adapterAlbums.setAlbums(it)
         }
 
-        val adapterSongs = SongAdapter()
+        val adapterSongs = SongAdapter(this)
         binding.rcvSongs.layoutManager = LinearLayoutManager(context)
         binding.rcvSongs.adapter = adapterSongs
         binding.rcvSongs.setHasFixedSize(true)
@@ -85,6 +87,13 @@ class DiscoverFragment : Fragment(), SingerAdapter.ItemSingerListener, AlbumAdap
         bundle.putInt("id_album", album.id)
         bundle.putString("image_album", album.link)
         parentFragment?.parentFragment?.findNavController()?.navigate(R.id.action_mainFragment_to_albumFragment,bundle)
+    }
+
+    override fun onItemSongClick(position: Int) {
+        val bundle = Bundle()
+        bundle.putString("type","NEW_SONGS")
+        bundle.putInt("position", position)
+        parentFragment?.parentFragment?.findNavController()?.navigate(R.id.action_mainFragment_to_playMusicFragment,bundle)
     }
 
 }
