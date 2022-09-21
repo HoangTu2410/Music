@@ -9,14 +9,22 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.android.music.model.Song
 import com.android.music.network.MusicsAPI
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlin.math.abs
 
 class PlayMusicViewModel : ViewModel() {
 
     private var _listSongPlay = MutableLiveData<List<Song>>()
-    var listSongPlay: LiveData<List<Song>> = _listSongPlay
+    val listSongPlay: LiveData<List<Song>> = _listSongPlay
     private var _song = MutableLiveData<Song>()
-    var song: LiveData<Song> = _song
+    val song: LiveData<Song> = _song
+    private var _duration = MutableLiveData<Int>()
+    val duration: LiveData<Int> = _duration
+    private var _currentTime = MutableLiveData<Int>()
+    var currentTime: MutableLiveData<Int> = _currentTime
     private var mediaPlayer: MediaPlayer? = null
     private var position = 0
 
@@ -26,25 +34,42 @@ class PlayMusicViewModel : ViewModel() {
     }
 
     fun isPlayingMusic(): Boolean {
-        return mediaPlayer?.isPlaying ?: false
+        return if (mediaPlayer == null) {
+            false;
+        } else {
+            mediaPlayer!!.isPlaying
+        }
     }
 
-    fun playMusic() {
+    suspend fun playMusic() {
         if (isPlayingMusic()) {
             stopMusic()
         }
         val url: String? = _song.value?.link
 
-        mediaPlayer = MediaPlayer().apply {
-            setAudioAttributes(
-                AudioAttributes.Builder()
-                    .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
-                    .setUsage(AudioAttributes.USAGE_MEDIA)
-                    .build()
-            )
-            setDataSource(url)
-            prepare()
-            start()
+        try {
+            mediaPlayer = MediaPlayer().apply {
+                setAudioAttributes(
+                    AudioAttributes.Builder()
+                        .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+                        .setUsage(AudioAttributes.USAGE_MEDIA)
+                        .build()
+                )
+                setDataSource(url)
+                prepare()
+                start()
+            }
+        } catch (e: Exception) {
+
+        }
+
+        _duration.postValue(mediaPlayer!!.duration)
+        viewModelScope.launch {
+            while (true) {
+                if (mediaPlayer == null) break
+                _currentTime.postValue(mediaPlayer!!.currentPosition)
+                delay(1000)
+            }
         }
     }
 
@@ -59,15 +84,27 @@ class PlayMusicViewModel : ViewModel() {
     fun stopMusic() {
         mediaPlayer?.stop()
         mediaPlayer?.release()
+        mediaPlayer = null
+    }
+
+    fun seekTo(position: Int) {
+        mediaPlayer?.let {
+            if (abs(position-mediaPlayer!!.currentPosition)>4) {
+                mediaPlayer!!.seekTo(position)
+            }
+        }
     }
 
     fun nextMusic() {
-        if (position == _listSongPlay.value?.size?.minus(1) ?: 0) {
+        if (position == (_listSongPlay.value?.size?.minus(1) ?: 0)) {
             loadSong(0)
         } else {
             loadSong(position + 1)
         }
-        playMusic()
+        val scope = CoroutineScope(Dispatchers.Default)
+        scope.launch {
+            playMusic()
+        }
     }
 
     fun previousMusic() {
@@ -78,7 +115,10 @@ class PlayMusicViewModel : ViewModel() {
         } else {
             loadSong(position - 1)
         }
-        playMusic()
+        val scope = CoroutineScope(Dispatchers.Default)
+        scope.launch {
+            playMusic()
+        }
     }
 
     fun loadListNewSong() {

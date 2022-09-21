@@ -32,7 +32,6 @@ class DiscoverViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 _songs.value = MusicsAPI.retrofitService.getNewSongs()
-                Log.e("Size", _songs.value!!.size.toString())
             } catch (e: Exception) {
                 _songs.value = listOf()
                 e.printStackTrace()
